@@ -6,14 +6,14 @@ import axios from "axios"
 const OMDB_URL = "http://www.omdbapi.com/"
     
 const Movie = () => {
-    const { title } = useParams()
+    const { title, pg } = useParams()
     const [movieCollection, setMovieCollection] = useState([])
 
     useEffect(() => {
         const fetchMovie = async (searchTerm) => {
             try {
                 let res = await axios.get(`${OMDB_URL}`, {
-                    params: { apikey, s: searchTerm }
+                    params: { apikey, s: searchTerm, page: pg }
                 })
                 let collect = res.data.Search
                 setMovieCollection(collect)
@@ -24,7 +24,7 @@ const Movie = () => {
             }
         }
         fetchMovie(title)
-    }, [title])
+    }, [title, pg])
 
     // let img = src ? <img src={src} alt={`Results for search term ${title}`} /> : <h3>Loading...</h3>
     return (

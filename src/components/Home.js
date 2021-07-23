@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const Home = () => {
     const [inputData, setInputData] = useState("")
-    const [isDataSent, setDataSent] = useState(false)
+    // const [isDataSent, setDataSent] = useState(false)
+    const history = useHistory()
+    console.log(history)
 
     const handleChange = e => {
         setInputData(e.target.value)
@@ -11,8 +13,13 @@ const Home = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        setDataSent(true)
-        console.log(inputData)
+        // setDataSent(true)
+        // console.log(inputData)
+        /**
+         * This is the other way, we call history.push(PATH)
+         */
+
+        history.push(`/movies/${inputData}/1`)
     }
 
     return (
@@ -21,7 +28,11 @@ const Home = () => {
                 <input type="text" placeholder="Search For A Movie" onChange={handleChange} />
                 <button type="submit">Search</button>
             </form>
-            {isDataSent && <Redirect to={`/movies/${inputData}`} />}
+            {/* 
+            one way of handling submit, checks that bool we set
+            for dataSent and if it's true, redirects to the designated path
+            */}
+            {/* {isDataSent && <Redirect to={`/movies/${inputData}`} />} */}
         </>
     )
 }
