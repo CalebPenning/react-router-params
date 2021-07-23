@@ -1,33 +1,30 @@
-import Movie from './components/Movie'
+// import Movie from './components/Movie'
 import './App.css'
-import { useState } from 'react'
+import MovieNav from './components/MovieNav'
+import { BrowserRouter } from 'react-router-dom'
+import Routes from './components/Routes'
 
 const App = () => {
-  const [movieTitle, setMovieTitle] = useState("")
-  const [inputHidden, setInputHidden] = useState(false)
-  const [movieHidden, setMovieHidden] = useState(true)
+  // const [movieTitle, setMovieTitle] = useState("")
+  // const [inputHidden, setInputHidden] = useState(false)
+  // const [movieHidden, setMovieHidden] = useState(true)
 
-  const handleChange = e => {
-    setMovieTitle(e.target.value)
-  }
+  // const handleChange = e => {
+  //   setMovieTitle(e.target.value)
+  // }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    setInputHidden(true)
-    setMovieHidden(false)
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  //   setInputHidden(true)
+  //   setMovieHidden(false) }
+
 
   return (
     <div>
-    { !inputHidden && movieHidden &&
-      <form onSubmit={handleSubmit}>
-        <label>Search For A Movie:</label>
-        <input id="title" name="title" onChange={handleChange} />
-      </form>
-    }
-    {  inputHidden && !movieHidden &&
-      <Movie title={movieTitle} />
-    }
+      <MovieNav  />
+      <BrowserRouter >
+        <Routes />
+      </BrowserRouter>
     </div>
   )
 }
