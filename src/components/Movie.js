@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import apikey from "../secrets"
 import axios from "axios"
 
 const OMDB_URL = "http://www.omdbapi.com/"
     
 const Movie = () => {
     const { title } = useParams()
-    const [src, setSrc] = useState(null)
     const [movieCollection, setMovieCollection] = useState([])
 
     useEffect(() => {
         const fetchMovie = async (searchTerm) => {
             try {
                 let res = await axios.get(`${OMDB_URL}`, {
-                    params: { apikey: "f4b4cbdc", s: searchTerm }
+                    params: { apikey, s: searchTerm }
                 })
-                setSrc(res.data.Search[0].Poster)
                 let collect = res.data.Search
                 setMovieCollection(collect)
                 console.log(collect)

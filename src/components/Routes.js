@@ -7,7 +7,7 @@ const Routes = () => (
       <Switch>
         <Route exact path="/"><Home /></Route>
         <Route path="/movies/:title"><Movie /></Route>
-        <Redirect to="/movies/pulp" />
+        <Redirect to="/" />
       </Switch>
     </>
 )
