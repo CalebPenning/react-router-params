@@ -3,6 +3,7 @@ import './App.css'
 import MovieNav from './components/MovieNav'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './components/Routes'
+import Counter from './components/Counter'
 
 const App = () => {
   // const [movieTitle, setMovieTitle] = useState("")
@@ -25,6 +26,7 @@ const App = () => {
       <BrowserRouter >
         <Routes />
       </BrowserRouter>
+      <Counter />
     </div>
   )
 }
